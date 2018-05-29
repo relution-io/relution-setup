@@ -7,7 +7,7 @@ services:
     networks:
       relution-network:
         aliases:
-          - mariadb-docker.example.com
+          - mariadb-docker
     environment:
       - MYSQL_DATABASE=relution
       - MYSQL_ROOT_PASSWORD=%MYSQL_ROOT_PASSWORD%
@@ -24,7 +24,7 @@ services:
     networks:
       relution-network:
         aliases:
-          - mongodb-docker.example.com
+          - mongodb-docker
     environment:
       - MONGO_INITDB_ROOT_USERNAME=relution
       - MONGO_INITDB_ROOT_PASSWORD=%MONGODB_ROOT_PASSWORD%
@@ -40,7 +40,7 @@ services:
     networks:
       relution-network:
         aliases:
-          - relution-docker.example.com
+          - relution-docker
     depends_on:
       - mariadb
       - mongodb
@@ -50,7 +50,7 @@ services:
     environment:
       - TZ=UTC
       - DATABASE_TYPE=mysql
-      - DATABASE_URL=jdbc:mariadb://mariadb-docker.example.com/relution?useServerPrepStmts=true
+      - DATABASE_URL=jdbc:mariadb://mariadb-docker/relution?useServerPrepStmts=true
       - DATABASE_USER=relution
       - DATABASE_PWD=%MYSQL_PASSWORD%
       - HOSTNAME=%EXT_HOSTNAME_URL%
@@ -63,7 +63,7 @@ services:
       - ORGA_ADMIN_EMAIL=%ADM_EMAIL%
       - ORGA_REPLYTOMAIL=%ADM_EMAIL%
       - MONGO_DATABASE=relution
-      - MONGO_HOST=mongodb-docker.example.com
+      - MONGO_HOST=mongodb-docker
       - MONGO_PORT=27017
       - SMTP_HOST=%SMTP_HOSTNAME%
     expose:
@@ -76,7 +76,7 @@ services:
     networks:
       relution-network:
         aliases:
-          - nginx-docker.example.com
+          - nginx-docker
     depends_on:
       - relution
     links:
