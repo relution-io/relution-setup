@@ -1,0 +1,26 @@
+relution:
+  database:
+    type: mysql
+    url: jdbc:mariadb://127.0.0.1:3306/relution?useServerPrepStmts=true
+    username: relution
+    password: %MYSQL_PASSWORD%
+  mongodb:
+    enabled: false
+  mail:
+    host: %SMTP_HOSTNAME%
+    port: %SMTP_PORT%
+    username: %SMTP_USERNAME%
+    password: %SMTP_PASSWORD%
+  smtp:
+    ttls: false
+    ssl: false
+    ehlo: true
+  wizard:
+    orga:
+      name: %ORG_UNIQUE_NAME%
+      fullName: %ORG_DISPLAY_NAME%
+      admin:
+        username: %ADM_USERNAME%
+        password: %ADM_PASSWORD%
+        givenname: %ADM_FIRST_NAME%
+        surname: %ADM_LAST_NAME%

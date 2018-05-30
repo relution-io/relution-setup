@@ -1,0 +1,20 @@
+[Unit]
+Description=Relution Server
+After=network.target
+
+[Service]
+TimeoutStartSec=0
+Environment=JAVA_HOME=/usr
+#ExecStartPre=/usr/bin/rm -rf /opt/relution/bundles-runtime
+ExecStart=/opt/relution/bin/relution-foreground.sh
+WorkingDirectory=/opt/relution
+KillSignal=SIGINT
+Restart=on-failure
+SyslogIdentifier=relution
+LimitNOFILE=10000
+LimitNPROC=10000
+User=relution
+Group=relution
+
+[Install]
+WantedBy=multi-user.target
