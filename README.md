@@ -28,7 +28,10 @@ Relution should work on any Linux distribution that supports `systemd` but this 
 
 Relution has been verified to work with:
 
-- Windows Server 2008 R2 or newer
+- Windows Server 2008 R2
+- Windows Server 2012
+- Windows Server 2012 R2
+- Windows Server 2016
 
 Relution should work on any recent version of Windows but this has not been verified and is not currently supported. If you wish to receive support, please ensure that you run Relution on a supported platform.
 
