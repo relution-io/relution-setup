@@ -1,4 +1,6 @@
 relution:
+  server:
+    externalURL: %EXT_HOSTNAME_URL%
   database:
     type: mysql
     url: jdbc:mariadb://127.0.0.1:3306/relution?useServerPrepStmts=true
