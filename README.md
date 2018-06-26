@@ -18,7 +18,7 @@ Relution is available on both Linux and Windows platforms. We recommend the use 
 
 Relution has been verified to work with:
 
-- CentOS 7.4
+- CentOS 7.5
 - Red Hat Enterprise Linux 7.5
 - SUSE Linux Enterprise Server 12
 
@@ -39,7 +39,7 @@ Relution should work on any recent version of Windows but this has not been veri
 
 Relution has been verified to work with:
 
-- MariaDB 5.5 or newer
+- MariaDB 10.3 or newer
 - Microsoft SQL Server 2008 or newer
-- MySQL 5.7 or newer
+- MySQL 8.0 or newer
 - Oracle Database 11g
