@@ -17,6 +17,7 @@ services:
       - '3306'
     volumes:
       - 'mariadb:/var/lib/mysql'
+      - '/opt/relution/relution.cnf:/etc/mysql/conf.d/relution.cnf'
   mongodb:
     image: mongo:latest
     restart: always
