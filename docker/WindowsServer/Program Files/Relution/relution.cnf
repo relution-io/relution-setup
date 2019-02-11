@@ -1,0 +1,10 @@
+[mysqld]
+collation-server=utf8mb4_general_ci
+character-set-server=utf8mb4
+max_allowed_packet=1G
+innodb_file_per_table=1
+
+## No longer needed/supported for MariaDB >= 10.2.2
+## If you have an older version please update or enable this
+# innodb_large_prefix=on
+# innodb_file_format=Barracuda
