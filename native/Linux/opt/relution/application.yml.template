@@ -1,3 +1,8 @@
+system:
+  admin:
+    password: %SYSTEM_ADMIN_PASSWORD%
+    email: %SYSTEM_ADMIN_EMAIL%
+
 relution:
   server:
     externalURL: %EXT_HOSTNAME_URL%
