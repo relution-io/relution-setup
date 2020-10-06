@@ -2,7 +2,7 @@
 
 This directory contains a [Docker Compose](https://docs.docker.com/compose/) file for [Relution](https://www.relution.io/) on [Windows](https://www.microsoft.com/). It has been verified to work on Windows Server 2016.
 
-For convenience, the file configures all services necessary to run a Relution server: [MariaDB](https://mariadb.org/), [MongoDB](https://www.mongodb.com/), Relution and [NGINX](https://www.nginx.com/).
+For convenience, the file configures all services necessary to run a Relution server: [MariaDB](https://mariadb.org/), [NGINX](https://www.nginx.com/) and Relution itself.
 
 Depending on your performance and security requirements consider running some or all of these services on separate machines.
 
