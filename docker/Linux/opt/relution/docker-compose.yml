@@ -1,4 +1,4 @@
-version: '3'
+version: '2.3'
 
 services:
   mariadb:
@@ -38,13 +38,14 @@ services:
       - DATABASE_URL=jdbc:mariadb://mariadb-docker/relution?useServerPrepStmts=true
       - DATABASE_USER=relution
       - DATABASE_PWD=%MYSQL_PASSWORD%
+      - SMTP_HOST=%SMTP_HOSTNAME%      
       - RELUTION_SERVER_EXTERNALURL=%EXT_HOSTNAME_URL%
       - RELUTION_SYSTEM_ADMIN_PASSWORD=%SYSTEM_ADMIN_PASSWORD%
       - RELUTION_SYSTEM_ADMIN_EMAIL=%SYSTEM_ADMIN_EMAIL%
-      - SMTP_HOST=%SMTP_HOSTNAME%
     expose:
       - '8080'
       - '8099'
+
   nginx:
     image: nginx:stable
     restart: always
