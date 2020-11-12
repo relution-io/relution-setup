@@ -80,6 +80,11 @@ server {
         proxy_pass http://127.0.0.1:8080;
     }
 
+    location ~ /Microsoft-Server-ActiveSync {
+        proxy_read_timeout 2100;
+        proxy_pass http://127.0.0.1:8080;
+    }
+
     # Limit POST requests to complianceViolations to 2 r/m
     location ~ ^/relution/api/v1/devices/[a-zA-Z0-9-]*/complianceViolations$ {
         limit_req zone=post_limit_very_slow burst=5;
