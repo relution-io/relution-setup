@@ -3,12 +3,16 @@ Description=Relution Server
 After=network.target
 
 [Service]
+Type=notify
+NotifyAccess=all
 TimeoutStartSec=0
+WatchdogSec=15min
 Environment=JAVA_HOME=/usr
-#ExecStartPre=/usr/bin/rm -rf /opt/relution/bundles-runtime
 ExecStart=/opt/relution/bin/relution-foreground.sh
 WorkingDirectory=/opt/relution
+KillMode=mixed
 KillSignal=SIGINT
+WatchdogSignal=SIGINT
 Restart=on-failure
 SyslogIdentifier=relution
 LimitNOFILE=10000
