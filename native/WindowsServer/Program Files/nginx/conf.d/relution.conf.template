@@ -46,7 +46,7 @@ server {
         include /etc/nginx/conf.d/relution-location.include;
     }
     
-    location ~ /relution/api/v1/files/.*/content {
+    location ~ /api/v1/system/files/.*/content {
         proxy_cache cache;
         proxy_cache_key $host$uri;            # must NOT include query params!
         proxy_cache_revalidate on;
@@ -58,7 +58,7 @@ server {
     }
 
     # Limit POST requests to complianceViolations to 2 r/m
-    location ~ ^/relution/api/v1/devices/[a-zA-Z0-9-]*/complianceViolations$ {
+    location ~ ^/api/v1/devices/[a-zA-Z0-9-]*/complianceViolations$ {
         limit_req zone=post_limit_very_slow burst=5;
         include /etc/nginx/conf.d/relution-location.include;
     }
