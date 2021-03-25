@@ -1,4 +1,5 @@
-version: '3'
+version: '2.3'
+
 services:
   mariadb:
     image: mariadb:latest
@@ -18,22 +19,7 @@ services:
     volumes:
       - 'mariadb:/var/lib/mysql'
       - '/opt/relution/relution.cnf:/etc/mysql/conf.d/relution.cnf'
-  mongodb:
-    image: mongo:latest
-    restart: always
-    container_name: docker_mongodb
-    networks:
-      relution-network:
-        aliases:
-          - mongodb-docker
-    environment:
-      - MONGO_INITDB_ROOT_USERNAME=relution
-      - MONGO_INITDB_ROOT_PASSWORD=%MONGODB_ROOT_PASSWORD%
-      - MONGO_INITDB_DATABASE=relution
-    expose:
-      - '27017'
-    volumes:
-      - 'mongodb:/data/db'
+
   relution:
     image: relution/relution:latest
     restart: always
@@ -44,34 +30,22 @@ services:
           - relution-docker
     depends_on:
       - mariadb
-      - mongodb
     links:
       - mariadb
-      - mongodb
     environment:
       - TZ=UTC
       - DATABASE_TYPE=mysql
       - DATABASE_URL=jdbc:mariadb://mariadb-docker/relution?useServerPrepStmts=true
       - DATABASE_USER=relution
       - DATABASE_PWD=%MYSQL_PASSWORD%
-      - HOSTNAME=%EXT_HOSTNAME_URL%
-      - SYSTEM_ADMIN_PASSWORD=%SYSTEM_ADMIN_PASSWORD%
-      - SYSTEM_ADMIN_EMAIL=%SYSTEM_ADMIN_EMAIL%
-      - ORGA_NAME=%ORG_UNIQUE_NAME%
-      - ORGA_FULLNAME=%ORG_DISPLAY_NAME%
-      - ORGA_ADMIN_USERNAME=%ADM_USERNAME%
-      - ORGA_ADMIN_PASSWORD=%ADM_PASSWORD%
-      - ORGA_ADMIN_GIVENNAME=%ADM_FIRST_NAME%
-      - ORGA_ADMIN_SURNAME=%ADM_LAST_NAME%
-      - ORGA_ADMIN_EMAIL=%ADM_EMAIL%
-      - ORGA_REPLYTOMAIL=%ADM_EMAIL%
-      - MONGO_DATABASE=relution
-      - MONGO_HOST=mongodb-docker
-      - MONGO_PORT=27017
-      - SMTP_HOST=%SMTP_HOSTNAME%
+      - SMTP_HOST=%SMTP_HOSTNAME%      
+      - RELUTION_SERVER_EXTERNALURL=%EXT_HOSTNAME_URL%
+      - RELUTION_SYSTEM_ADMIN_PASSWORD=%SYSTEM_ADMIN_PASSWORD%
+      - RELUTION_SYSTEM_ADMIN_EMAIL=%SYSTEM_ADMIN_EMAIL%
     expose:
       - '8080'
       - '8099'
+
   nginx:
     image: nginx:stable
     restart: always
@@ -96,7 +70,6 @@ services:
 
 volumes:
   mariadb:
-  mongodb:
 
 networks:
   relution-network:
