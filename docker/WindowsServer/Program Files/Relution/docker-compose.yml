@@ -9,6 +9,7 @@ services:
         aliases:
           - mariadb-docker
     environment:
+      - TZ=Europe/Berlin
       - MYSQL_DATABASE=relution
       - MYSQL_ROOT_PASSWORD=%MYSQL_ROOT_PASSWORD%
       - MYSQL_USER=relution
@@ -32,7 +33,7 @@ services:
     links:
       - mariadb
     environment:
-      - TZ=UTC
+      - TZ=Europe/Berlin
       - DATABASE_TYPE=mysql
       - DATABASE_URL=jdbc:mariadb://mariadb-docker/relution?useServerPrepStmts=true
       - DATABASE_USER=relution
@@ -58,6 +59,7 @@ services:
     links:
       - relution
     environment:
+     - TZ=Europe/Berlin
      - NGINX_HOST=%EXT_HOSTNAME%
     ports:
      - "80:80"
