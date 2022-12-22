@@ -33,20 +33,11 @@ services:
       - mariadb
     links:
       - mariadb
-    environment:
-      - TZ=Europe/Berlin
-      - DATABASE_TYPE=mysql
-      - DATABASE_URL=jdbc:mariadb://mariadb-docker/relution?useServerPrepStmts=true
-      - DATABASE_USER=relution
-      - DATABASE_PWD=%MYSQL_PASSWORD%
-      - SMTP_HOST=%SMTP_HOSTNAME%      
-      - RELUTION_SERVER_EXTERNALURL=%EXT_HOSTNAME_URL%
-      - RELUTION_SYSTEM_ADMIN_PASSWORD=%SYSTEM_ADMIN_PASSWORD%
-      - RELUTION_SYSTEM_ADMIN_EMAIL=%SYSTEM_ADMIN_EMAIL%
     expose:
       - '8080'
       - '8099'
-
+    volumes:
+      - './application.yml:/opt/relution/application.yml'
   nginx:
     image: nginx:stable
     restart: always
