@@ -7,8 +7,8 @@ relution:
     externalURL: %EXT_HOSTNAME_URL%
   database:
     type: mariadb
-    #Adjust hostname in the url if the database runs outside the docker container.
-    url: jdbc:mariadb://mariad-docker:3306/relution?useServerPrepStmts=true
+    # Adjust hostname in the url if the database runs outside docker compose
+    url: jdbc:mariadb://mariadb-docker/relution?useServerPrepStmts=true
     username: relution
     password: %MYSQL_PASSWORD%
   mail:
