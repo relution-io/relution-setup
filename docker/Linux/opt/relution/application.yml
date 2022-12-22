@@ -1,0 +1,22 @@
+relution:
+  system:
+    admin:
+      password: %SYSTEM_ADMIN_PASSWORD%
+      email: %SYSTEM_ADMIN_EMAIL%
+  server:
+    externalURL: %EXT_HOSTNAME_URL%
+  database:
+    type: mariadb
+    # Adjust hostname in the url if the database runs outside docker compose
+    url: jdbc:mariadb://mariadb-docker/relution?useServerPrepStmts=true
+    username: relution
+    password: %MYSQL_PASSWORD%
+  mail:
+    host: %SMTP_HOSTNAME%
+    port: %SMTP_PORT%
+    username: %SMTP_USERNAME%
+    password: %SMTP_PASSWORD%
+  smtp:
+    ttls: false
+    ssl: false
+    ehlo: true
