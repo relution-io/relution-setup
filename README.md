@@ -18,9 +18,9 @@ Relution is available on both Linux and Windows platforms. We recommend the use 
 
 Relution has been verified to work with:
 
-- CentOS 7.5
-- Red Hat Enterprise Linux 7.5
-- SUSE Linux Enterprise Server 12
+- Alma or Rocky Linux 8
+- Red Hat Enterprise Linux 8 or newer
+- SUSE Linux Enterprise Server 12 or newer
 
 Relution should work on any Linux distribution that supports `systemd` but this has not been verified and is not currently supported. If you wish to receive support, please ensure that you run Relution on a supported platform.
 
@@ -28,10 +28,7 @@ Relution should work on any Linux distribution that supports `systemd` but this 
 
 Relution has been verified to work with:
 
-- Windows Server 2008 R2
-- Windows Server 2012
-- Windows Server 2012 R2
-- Windows Server 2016
+- Windows Server 2016 or newer
 
 Relution should work on any recent version of Windows but this has not been verified and is not currently supported. If you wish to receive support, please ensure that you run Relution on a supported platform.
 
@@ -40,6 +37,6 @@ Relution should work on any recent version of Windows but this has not been veri
 Relution has been verified to work with:
 
 - MariaDB 10.3 or newer
-- Microsoft SQL Server 2008 or newer
 - MySQL 8.0 or newer
-- Oracle Database 11g
+- PostgreSQL 12 or newer
+
