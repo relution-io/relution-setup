@@ -12,7 +12,7 @@ For convenience setup scripts are provided that can be used to set up a basic Re
 
 ## Supported platforms
 
-Relution is available on both Linux and Windows platforms. We recommend the use of Linux.
+We recommend the use of Linux in combination with docker.
 
 ### Linux
 
@@ -24,14 +24,6 @@ Relution has been verified to work with:
 
 Relution should work on any Linux distribution that supports `systemd` but this has not been verified and is not currently supported. If you wish to receive support, please ensure that you run Relution on a supported platform.
 
-### Windows
-
-Relution has been verified to work with:
-
-- Windows Server 2016 or newer
-
-Relution should work on any recent version of Windows but this has not been verified and is not currently supported. If you wish to receive support, please ensure that you run Relution on a supported platform.
-
 ## Supported databases
 
 Relution has been verified to work with:
@@ -39,4 +31,3 @@ Relution has been verified to work with:
 - MariaDB 10.3 or newer
 - MySQL 8.0 or newer
 - PostgreSQL 12 or newer
-
