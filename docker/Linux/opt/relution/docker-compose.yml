@@ -2,7 +2,7 @@ version: '2.3'
 
 services:
   mariadb:
-    image: mariadb:latest
+    image: mariadb:lts
     restart: always
     container_name: docker_mariadb
     networks:
