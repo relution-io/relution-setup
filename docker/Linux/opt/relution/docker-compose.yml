@@ -33,6 +33,8 @@ services:
       - mariadb
     links:
       - mariadb
+    environment:
+      - TZ=Europe/Berlin
     expose:
       - '8080'
       - '8099'
