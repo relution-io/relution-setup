@@ -10,6 +10,10 @@ Depending on your performance and security requirements consider running some or
 
 This file is an example. It contains placeholders for arguments like passwords and external host names. To use this file, please replace all placeholders in the form of `%VALUE%` with actual values.
 
+## application.yml
+
+This file contains additional parameters that must be configured. 
+
 ## relution-nginx.conf
 
 This file is an example. It contains the basic NGINX configuration that is needed to make Relution available on the Internet. To use this file, verify that the host names and certificate files specified in this file match your environment.
