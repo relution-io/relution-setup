@@ -11,12 +11,3 @@ relution:
     url: jdbc:mariadb://mariadb-docker/relution?useServerPrepStmts=true
     username: relution
     password: %MYSQL_PASSWORD%
-  mail:
-    host: %SMTP_HOSTNAME%
-    port: %SMTP_PORT%
-    username: %SMTP_USERNAME%
-    password: %SMTP_PASSWORD%
-  smtp:
-    ttls: false
-    ssl: false
-    ehlo: true
