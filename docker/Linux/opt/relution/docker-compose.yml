@@ -1,5 +1,3 @@
-version: '2.3'
-
 services:
   mariadb:
     image: mariadb:lts
@@ -40,6 +38,7 @@ services:
       - '8099'
     volumes:
       - './application.yml:/opt/relution/application.yml'
+
   nginx:
     image: nginx:stable
     restart: always
