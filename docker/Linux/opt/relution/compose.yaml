@@ -1,23 +1,21 @@
 services:
-  mariadb:
-    image: mariadb:lts
+  database:
+    image: postgres:18
     restart: always
-    container_name: docker_mariadb
+    container_name: docker_database
     networks:
       relution-network:
         aliases:
-          - mariadb-docker
+          - database-docker
     environment:
       - TZ=Europe/Berlin
-      - MYSQL_DATABASE=relution
-      - MYSQL_ROOT_PASSWORD=%MYSQL_ROOT_PASSWORD%
-      - MYSQL_USER=relution
-      - MYSQL_PASSWORD=%MYSQL_PASSWORD%
+      - POSTGRES_DB=relution
+      - POSTGRES_USER=relution
+      - POSTGRES_PASSWORD=%POSTGRES_PASSWORD%
     expose:
-      - '3306'
+      - '5432'
     volumes:
-      - 'mariadb:/var/lib/mysql'
-      - '/opt/relution/relution.cnf:/etc/mysql/conf.d/relution.cnf'
+      - 'postgresql:/var/lib/postgresql'
 
   relution:
     image: relution/relution:latest
@@ -30,7 +28,7 @@ services:
     depends_on:
       - mariadb
     links:
-      - mariadb
+      - database
     environment:
       - TZ=Europe/Berlin
     expose:
@@ -63,7 +61,7 @@ services:
      - '/opt/relution/server.key:/etc/nginx/server.key'
 
 volumes:
-  mariadb:
+  postgresql:
 
 networks:
   relution-network:
