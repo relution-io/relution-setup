@@ -6,8 +6,8 @@ relution:
   server:
     externalURL: %EXT_HOSTNAME_URL%
   database:
-    type: mariadb
+    type: postgresql
     # Adjust hostname in the url if the database runs outside docker compose
-    url: jdbc:mariadb://mariadb-docker/relution?useServerPrepStmts=true
+    url: jdbc:postgresql://database-docker:5432/relution?currentSchema=public
     username: relution
-    password: %MYSQL_PASSWORD%
+    password: %POSTGRES_PASSWORD%
