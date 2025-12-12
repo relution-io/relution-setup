@@ -1,12 +1,8 @@
 services:
   database:
     image: postgres:18
-    restart: always
-    container_name: docker_database
-    networks:
-      relution-network:
-        aliases:
-          - database-docker
+    restart: unless-stopped
+    container_name: database
     environment:
       - TZ=Europe/Berlin
       - POSTGRES_DB=relution
@@ -19,12 +15,8 @@ services:
 
   relution:
     image: relution/relution:latest
-    restart: always
-    container_name: docker_relution
-    networks:
-      relution-network:
-        aliases:
-          - relution-docker
+    restart: unless-stopped
+    container_name: relution
     depends_on:
       - database
     links:
@@ -39,12 +31,8 @@ services:
 
   nginx:
     image: nginx:stable
-    restart: always
-    container_name: docker_nginx
-    networks:
-      relution-network:
-        aliases:
-          - nginx-docker
+    restart: unless-stopped
+    container_name: nginx
     depends_on:
       - relution
     links:
