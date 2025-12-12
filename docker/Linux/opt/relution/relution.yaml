@@ -1,0 +1,15 @@
+http:
+  routers:
+    app:
+      rule: Host(`external.url`)
+      entryPoints:
+        - websecure
+      tls:
+        certResolver: letsencrypt
+      service: relution
+
+  services:
+    relution:
+      loadBalancer:
+        servers:
+          - url: "http://relution:8080"

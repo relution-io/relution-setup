@@ -8,6 +8,6 @@ relution:
   database:
     type: postgresql
     # Adjust hostname in the url if the database runs outside docker compose
-    url: jdbc:postgresql://database-docker:5432/relution?currentSchema=public
+    url: jdbc:postgresql://database:5432/relution?currentSchema=public
     username: relution
     password: %POSTGRES_PASSWORD%
