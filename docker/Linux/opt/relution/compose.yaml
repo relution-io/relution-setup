@@ -19,8 +19,6 @@ services:
     container_name: relution
     depends_on:
       - database
-    links:
-      - database
     environment:
       - TZ=Europe/Berlin
     expose:
@@ -34,8 +32,6 @@ services:
     restart: unless-stopped
     container_name: nginx
     depends_on:
-      - relution
-    links:
       - relution
     environment:
      - TZ=Europe/Berlin
