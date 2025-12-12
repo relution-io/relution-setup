@@ -27,22 +27,29 @@ services:
     volumes:
       - './application.yml:/opt/relution/application.yml'
 
-  nginx:
-    image: nginx:stable
+  traefik:
     restart: unless-stopped
-    container_name: nginx
-    depends_on:
-      - relution
-    environment:
-     - TZ=Europe/Berlin
-     - NGINX_HOST=%EXT_HOSTNAME%
+    image: traefik:${DOCKER_TRAEFIK:-latest}
+    command:
+      - --providers.file.directory=/opt/traefik/
+      - --entryPoints.web.address=:80
+      - --entryPoints.web.http.redirections.entryPoint.to=websecure
+      - --entryPoints.web.http.redirections.entryPoint.scheme=https
+      - --entryPoints.websecure.address=:443
+      - --certificatesresolvers.letsencrypt.acme.storage=/letsencrypt/acme.json
+      - --certificatesresolvers.letsencrypt.acme.httpchallenge.entrypoint=web
     ports:
-     - "80:80"
-     - "443:443"
+      - '80:80'
+      - '443:443'
     volumes:
-     - '/opt/relution/relution-nginx.conf:/etc/nginx/conf.d/relution-nginx.conf'
-     - '/opt/relution/server.pem:/etc/nginx/server.pem'
-     - '/opt/relution/server.key:/etc/nginx/server.key'
+      - ./certs/letsencrypt:/letsencrypt
+      - ./configs/traefik:/opt/traefik
+    logging:
+      driver: 'json-file'
+      options:
+        max-size: '${DOCKER_TRAEFIK_LOGSIZE:-64m}'
+        max-file: '4'
+        compress: 'true'
 
 volumes:
   postgresql:
