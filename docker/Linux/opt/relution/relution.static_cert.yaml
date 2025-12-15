@@ -16,4 +16,4 @@ http:
 tls:
   certificates:
     - certFile: "/opt/certs/server.pem"
-      keyFile: "/opt/certs/server.pem"
+      keyFile: "/opt/certs/server.key"
