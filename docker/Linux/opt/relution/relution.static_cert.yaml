@@ -4,7 +4,6 @@ http:
       rule: Host(`external.url`)
       entryPoints:
         - websecure
-      tls: {}
       service: relution
 
   services:
