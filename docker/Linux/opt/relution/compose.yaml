@@ -1,12 +1,8 @@
 services:
   database:
     image: postgres:18
-    restart: always
-    container_name: docker_database
-    networks:
-      relution-network:
-        aliases:
-          - database-docker
+    restart: unless-stopped
+    container_name: database
     environment:
       - TZ=Europe/Berlin
       - POSTGRES_DB=relution
@@ -19,15 +15,9 @@ services:
 
   relution:
     image: relution/relution:latest
-    restart: always
-    container_name: docker_relution
-    networks:
-      relution-network:
-        aliases:
-          - relution-docker
+    restart: unless-stopped
+    container_name: relution
     depends_on:
-      - database
-    links:
       - database
     environment:
       - TZ=Europe/Berlin
@@ -37,28 +27,31 @@ services:
     volumes:
       - './application.yml:/opt/relution/application.yml'
 
-  nginx:
-    image: nginx:stable
-    restart: always
-    container_name: docker_nginx
-    networks:
-      relution-network:
-        aliases:
-          - nginx-docker
-    depends_on:
-      - relution
-    links:
-      - relution
+  traefik:
+    restart: unless-stopped
+    image: traefik:${DOCKER_TRAEFIK:-latest}
+    command:
+      - --providers.file.directory=/opt/traefik/
+      - --entryPoints.web.address=:80
+      - --entryPoints.web.http.redirections.entryPoint.to=websecure
+      - --entryPoints.web.http.redirections.entryPoint.scheme=https
+      - --entryPoints.websecure.address=:443
+      - --certificatesresolvers.letsencrypt.acme.storage=/letsencrypt/acme.json
+      - --certificatesresolvers.letsencrypt.acme.httpchallenge.entrypoint=web
     environment:
-     - TZ=Europe/Berlin
-     - NGINX_HOST=%EXT_HOSTNAME%
+      - TZ=Europe/Berlin
     ports:
-     - "80:80"
-     - "443:443"
+      - '80:80'
+      - '443:443'
     volumes:
-     - '/opt/relution/relution-nginx.conf:/etc/nginx/conf.d/relution-nginx.conf'
-     - '/opt/relution/server.pem:/etc/nginx/server.pem'
-     - '/opt/relution/server.key:/etc/nginx/server.key'
+      - ./certs/letsencrypt:/letsencrypt
+      - ./configs/traefik:/opt/traefik
+    logging:
+      driver: 'json-file'
+      options:
+        max-size: '${DOCKER_TRAEFIK_LOGSIZE:-64m}'
+        max-file: '4'
+        compress: 'true'
 
 volumes:
   postgresql:
