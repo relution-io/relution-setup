@@ -12,4 +12,4 @@ http:
     relution:
       loadBalancer:
         servers:
-          - url: "http://relution:8080"
+          - url: "http://relution:8080 "
