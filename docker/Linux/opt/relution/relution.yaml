@@ -1,6 +1,6 @@
 http:
   routers:
-    app:
+    relution:
       rule: Host(`external.url`)
       entryPoints:
         - websecure
