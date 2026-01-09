@@ -12,6 +12,8 @@ services:
       - '5432'
     volumes:
       - 'postgresql:/var/lib/postgresql'
+    networks:
+      - database
 
   relution:
     image: relution/relution:latest
@@ -26,6 +28,9 @@ services:
       - '8099'
     volumes:
       - './application.yml:/opt/relution/application.yml'
+    networks:
+      - reverse-proxy
+      - database
 
   traefik:
     restart: unless-stopped
@@ -46,6 +51,8 @@ services:
     volumes:
       - ./certs/letsencrypt:/letsencrypt
       - ./configs/traefik:/opt/traefik
+    networks:
+      - reverse-proxy
     logging:
       driver: 'json-file'
       options:
@@ -57,4 +64,6 @@ volumes:
   postgresql:
 
 networks:
-  relution-network:
+  reverse-proxy:
+  database:
+    internal: true
