@@ -64,6 +64,6 @@ volumes:
   postgresql:
 
 networks:
-  reverse-proxy:
+  reverse-proxy: {}
   database:
     internal: true
