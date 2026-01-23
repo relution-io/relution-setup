@@ -4,10 +4,10 @@ services:
     restart: unless-stopped
     container_name: database
     environment:
-      - TZ=Europe/Berlin
-      - POSTGRES_DB=relution
-      - POSTGRES_USER=relution
-      - POSTGRES_PASSWORD=%POSTGRES_PASSWORD%
+      TZ: "Europe/Berlin"
+      POSTGRES_DB: "relution"
+      POSTGRES_USER: "relution"
+      POSTGRES_PASSWORD: "%POSTGRES_PASSWORD%"
     expose:
       - '5432'
     volumes:
@@ -44,7 +44,7 @@ services:
       - --certificatesresolvers.letsencrypt.acme.storage=/letsencrypt/acme.json
       - --certificatesresolvers.letsencrypt.acme.httpchallenge.entrypoint=web
     environment:
-      - TZ=Europe/Berlin
+      TZ: "Europe/Berlin"
     ports:
       - '80:80'
       - '443:443'
