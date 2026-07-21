@@ -25,6 +25,9 @@ services:
       - database
     environment:
       - TZ=Europe/Berlin
+    secrets:
+      - postgres_password
+      - system_admin_password
     expose:
       - '8080'
       - '8099'
@@ -64,6 +67,12 @@ services:
 
 volumes:
   postgresql:
+
+secrets:
+  postgres_password:
+    file: ./secrets/postgres_password
+  system_admin_password:
+    file: ./secrets/system_admin_password
 
 networks:
   reverse-proxy: {}
