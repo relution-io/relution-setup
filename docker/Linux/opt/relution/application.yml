@@ -1,7 +1,11 @@
+spring:
+  config:
+    import: optional:file:/run/secrets/
+
 relution:
   system:
     admin:
-      password: %SYSTEM_ADMIN_PASSWORD%
+      password: ${system_admin_password}
       email: %SYSTEM_ADMIN_EMAIL%
   server:
     externalURL: %EXT_HOSTNAME_URL%
@@ -10,4 +14,4 @@ relution:
     # Adjust hostname in the url if the database runs outside docker compose
     url: jdbc:postgresql://database:5432/relution?currentSchema=public
     username: relution
-    password: %POSTGRES_PASSWORD%
+    password: ${postgres_password}
