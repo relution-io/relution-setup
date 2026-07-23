@@ -7,7 +7,7 @@ services:
       TZ: "Europe/Berlin"
       POSTGRES_DB: "relution"
       POSTGRES_USER: "relution"
-      POSTGRES_PASSWORD_FILE: "/run/secrets/postgres_passwd"
+      POSTGRES_PASSWORD_FILE: "/run/secrets/postgres_password"
     secrets:
       - postgres_password
     expose:
